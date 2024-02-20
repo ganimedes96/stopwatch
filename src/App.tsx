@@ -34,10 +34,12 @@ export function App() {
 
   const handleStop = () => {
     setRunning(false);
+  };
+
+  const handleSave = () => {
     const formattedTime = formatTime(time);
     setSavedTimes([...savedTimes, {id: uuidv4(), time: formattedTime}]);
-
-  };
+  }
 
   const handleDelete = (id: string) => {
     
@@ -89,6 +91,12 @@ export function App() {
             onClick={handleReset}
           >
             Reiniciar
+          </Button>
+          <Button
+            className="text-zinc-50 bg-blue-500 font-semibold"
+            onClick={handleSave}
+          >
+            Salvar
           </Button>
         </div>
         <TableTime timeData={savedTimes} deleteTime={handleDelete} sumTimes={sumTimes}/>
